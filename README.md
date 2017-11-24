@@ -1,4 +1,9 @@
 
+<!-- Added by Tom:  mathjax -->
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 Phase retrieval is the recovery of a signal from only the magnitudes, and not the phases, of complex-valued linear measurements.  Phase retrieval problems arise in many different applications,
 particularly in crystallography and microscopy.
 
