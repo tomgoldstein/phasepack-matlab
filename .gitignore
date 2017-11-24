@@ -1,0 +1,53 @@
+.idea/
+
+## Generic
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+.localized
+.metadata
+
+## Data
+*.obj
+
+## Python
+*.pyc
+.idea
+
+## Java
+*.class
+.project
+.classpath
+.settings
+.externalToolBuilders
+
+## Torch data files
+*.t7
+
+## latex
+*.aux
+*.glo
+*.idx
+*.log
+*.toc
+*.ist
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtcl
+*.out
+*.synctex.gz
+
