@@ -35,7 +35,7 @@
 %close all
 
 %% 1.Set up parameters
-imageSize = 64;         % Side-length of image to reconstruct. Valid choices: 16,40,64
+imageSize = 16;         % Side-length of image to reconstruct. Valid choices: 16,40,64
 datasetSelection = 3;   % Which dataset to select measurements from.  Valid choices: 1-5
 residualConstant = 0.3; 
 
@@ -59,8 +59,7 @@ plift = struct('algorithm','phaselift');
 % Grab your pick of algorithms.
 %algorithms = {twf,plamp,plift};
 algorithms = {wf,twf,taf,rwf,raf,fienup,gs,ampflow,kac,cd,scgm,pmax,plamp,plift};
-algorithms = {wf,twf,taf,rwf,raf,fienup,gs,ampflow,kac,cd,scgm,plamp,plift,pmax};
-%algorithms = {pmax,plamp};
+algorithms = {wf,twf};
 
 %% 2. Run benchmark
 benchmarkTransmissionMatrix(imageSize, datasetSelection, residualConstant, algorithms)

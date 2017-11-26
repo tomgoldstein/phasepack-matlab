@@ -52,7 +52,7 @@ function benchmarkTransmissionMatrix(imageSize, datasetSelection, residualConsta
     % This string contains a text-based table with all the results, and is
     % printed after all calculations are done.
     % Results will also be printed incrementally as the benchmark runs.
-    resultsTable = '\nAlgorithm  |  Recon Error  |  Measurement Error \n';
+    resultsTable = '\nAlgorithm  |  Measurement Error \n';
     
     %% Loop over each algorithm, and perform reconstruction and evaluation 
     for k=1:length(algorithms)
@@ -65,8 +65,6 @@ function benchmarkTransmissionMatrix(imageSize, datasetSelection, residualConsta
         % Record the error in the table
         resultsTable = [resultsTable,...
                         pad(opts.algorithm,16),...
-                        sprintf('%0.5f',reconError),...
-                        '          ',...
                         sprintf('%0.5f',measurementError),...
                         '\n'];
     end
@@ -114,7 +112,7 @@ function [A,Xt,b] = loadData(residualConstant, datasetSelection, imageSize)
         load(strcat(dataRoot,'TransmissionMatrices/Coherent_Data/',measurementType,'/YH_squared_test.mat'));
     catch
         error(['You are missing the transmission matrix dataset.  To download it, Go to',...
-            'https://rice.app.box.com/s/0c7thl2ck06mhaov1y3wnbzgjalf6ssq/folder/26509131173,'...
+            'https://rice.app.box.com/v/TransmissionMatrices/,'...
             'and download the "TransmissionMatrices" folder. Unzip the downloaded folder and',...
             'place it in the in "data" folder. See the user guide for details.']); 
     end
@@ -174,7 +172,7 @@ function [reconError, measurementError] = reconstructSignal(A,Xt,Y,imageSize,dat
 
     reconError = norm(Xt(:)-Xrec(:))/norm(Xt(:));
     measurementError = norm(abs(A*X)-Y(:))/norm(Y(:));
-    fprintf('    Relative reconstruction error = %s\n',reconError);
+    %fprintf('    Relative reconstruction error = %s\n',reconError);
     fprintf('    Relative measurement error = %s\n',measurementError);
 end
     
