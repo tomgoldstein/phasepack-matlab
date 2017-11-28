@@ -108,10 +108,11 @@ ymean = mean(y);
 y = y/ymean;
 
 % Apply pre-processing function
-T = (y-1)./(1+sqrt(delta)-1);
+yplus = max(y,0);
+T = (yplus-1)./(yplus+sqrt(delta)-1);  % Formula from equation 25 in paper
 
 % Un-normalize the measurements
-y = y*ymean;
+T = T*ymean;
 
 % Build the function handle associated to the matrix Y
 Yfunc = @(x) 1/m*At(T.*A(x));

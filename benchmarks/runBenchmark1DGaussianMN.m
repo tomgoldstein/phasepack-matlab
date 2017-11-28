@@ -42,7 +42,7 @@ dataSet = '1DGaussian';
 
 % Set up general parameters
 params.verbose = false;
-params.numTrials = 100;       % run several random trials for each scenario, and report average results
+params.numTrials = 20;       % run several random trials for each scenario, and report average results
 params.n = 100;              % num of unknown elements
 params.isComplex = true;    % use complex matrices? or just stick to real?
 params.policy = 'median';	% use the median performance over trails to assess algortihms
