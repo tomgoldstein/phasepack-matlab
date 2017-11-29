@@ -6,6 +6,12 @@
 % different methods behave as the number of measurements increases.  The
 % y-axis plots the success rate (rate of exact signal recovery).  This is
 % done by setting params.policy='successrate'.
+%
+% The algorithms currently used in this implementation are all instances of
+% PhaseMax, but with different levels of accuracy in the initializer.  To
+% control the level of initialization accuracy, we set the initializer to
+% "angle", and specify the angle between the true signal, and the initial
+% guess.
 % 
 % This script does the following:
 % 
@@ -44,13 +50,16 @@ dataSet = '1DGaussian';
 
 % Set up general parameters
 params.verbose = false;
-params.numTrials = 100;       % run several random trials for each scenario, and report average results
-params.n = 500;              % num of unknown elements
-params.isComplex = true;    % use complex matrices? or just stick to real?
+params.numTrials = 20;         % run several random trials for each scenario, and report average results
+params.n = 500;                 % num of unknown elements
+params.isComplex = true;        % use complex matrices? or just stick to real?
 params.policy = 'successrate';	% use the successrate
 params.successConstant = 1e-4;
 
-   
+%  Each of these algorithm is an instance of PhaseMax.  However, they each 
+%  are initialized with starting points of different accuracies.  The 
+%  "angle" initializer grabs the "initAngle" entry from the options, and
+%  produces an initializer that makes this angle with the true signal.
 pmax25 = struct('algorithm','phasemax','initMethod','angle');                                             
 pmax25.tol=1e-6;
 pmax25.initAngle=25/360*2*pi;

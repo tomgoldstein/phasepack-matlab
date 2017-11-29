@@ -57,9 +57,8 @@ scgm = struct('algorithm','sketchycgm');
 plift = struct('algorithm','phaselift');                                             
 
 % Grab your pick of algorithms.
-%algorithms = {twf,plamp,plift};
-algorithms = {wf,twf,taf,rwf,raf,fienup,gs,ampflow,kac,cd,scgm,pmax,plamp,plift};
-algorithms = {pmax};
+algorithms = {wf,raf,fienup};
+
 
 %% 2. Run benchmark
 benchmarkTransmissionMatrix(imageSize, datasetSelection, residualConstant, algorithms)
