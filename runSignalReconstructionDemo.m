@@ -45,11 +45,11 @@ A = randn(m,n)+1i*randn(m,n);
 b = abs(A*x_true); 
 
 %% Set options for PhasePack - this is where we choose the recovery algorithm
-opts = struct;             % Create an empty struct to store options
-opts.algorithm = 'Fienup';    % Use the Fienup method to solve the retrieval problem.  Try changing this to 'twf' for truncated Wirtinger flow.
-opts.initMethod = 'null';  % Use the null initialzer method to generate an initial starting point for the solver  
-opts.tol = 1e-3;           % The tolerance - make this smaller for more accurate solutions, or larger for faster runtimes
-opts.verbose = 2;          % Print out lots of information as the solver runs (set this to 1 or 0 for less output)
+opts = struct;                  % Create an empty struct to store options
+opts.algorithm = 'Fienup';      % Use the Fienup method to solve the retrieval problem.  Try changing this to 'twf' for truncated Wirtinger flow.
+opts.initMethod = 'optimal';    % Use the optimal spectral initializer method to generate an initial starting point for the solver  
+opts.tol = 1e-3;                % The tolerance - make this smaller for more accurate solutions, or larger for faster runtimes
+opts.verbose = 2;               % Print out lots of information as the solver runs (set this to 1 or 0 for less output)
 
 %% Run the Phase retrieval Algorithm
 fprintf('Running %s algorithm\n',opts.algorithm);
@@ -80,7 +80,7 @@ figure;
 subplot(1,2,1);
 scatter(real(x_true),real(x));
 xlabel('Original signal value');
-xlabel('Recovered signal value');
+ylabel('Recovered signal value');
 title('Original vs recovered signal');
 
 % Plot a convergence curve
