@@ -58,11 +58,11 @@ x = image(:);  % Convert the signal/image into a vector so PhasePack can handle 
 b = abs(A(x));  % Use the measurement operator 'A', defined below, to obtain phaseless measurements.
 
 %% Set options for PhasePack - this is where we choose the recovery algorithm
-opts = struct;             % Create an empty struct to store options
-opts.algorithm = 'twf';    % Use the truncated Wirtinger flow method to solve the retrieval problem.  Try changing this to 'Fienup'.
-opts.initMethod = 'TruncatedSpectral';  % Use a truncated spectral method to generate an initial starting point for the solver  
-opts.tol = 1e-3;           % The tolerance - make this smaller for more accurate solutions, or larger for faster runtimes
-opts.verbose = 2;          % Print out lots of information as the solver runs (set this to 1 or 0 for less output)
+opts = struct;                % Create an empty struct to store options
+opts.algorithm = 'twf';       % Use the truncated Wirtinger flow method to solve the retrieval problem.  Try changing this to 'Fienup'.
+opts.initMethod = 'optimal';  % Use a spectral method with optimized data pre-processing to generate an initial starting point for the solver  
+opts.tol = 1e-3;              % The tolerance - make this smaller for more accurate solutions, or larger for faster runtimes
+opts.verbose = 2;             % Print out lots of information as the solver runs (set this to 1 or 0 for less output)
 
 %% Run the Phase retrieval Algorithm
 fprintf('Running %s algorithm\n',opts.algorithm);
@@ -74,13 +74,13 @@ fprintf('Running %s algorithm\n',opts.algorithm);
 [x, outs, opts] = solvePhaseRetrieval(@A, @At, b, numel(x), opts);
 
 % Convert the vector output back into a 2D image
-recovered_image = real(reshape(x,numrows,numcols));
+recovered_image = reshape(x,numrows,numcols);
 
 % Phase retrieval can only recover images up to a phase ambiguity. 
 % Let's apply a phase rotation to align the recovered image with the 
-% original so it looks nice when we plot it.
+% original so it looks nice when we display it.
 rotation = sign(recovered_image(:)'*image(:));
-recovered_image = recovered_image*rotation;
+recovered_image = real(rotation*recovered_image);
 
 % Print some useful info to the console
 fprintf('Image recovery required %d iterations (%f secs)\n',outs.iterationCount, outs.solveTimes(end));
@@ -114,8 +114,9 @@ set(gcf,'units','points','position',[0,0,1200,300]);
 % Create a measurement operator that maps a vector of pixels into Fourier
 % measurements using the random binary masks defined above.
 function measurements = A(pixels)
-    % The reconstruction method stores iterates as vectors, so we need to
-    % accept a vector input, and convert it back into an image.
+    % The reconstruction method stores iterates as vectors, so this 
+    % function needs to accept a vector as input.  Let's convert the vector
+    % back to a 2D image.
     im = reshape(pixels,[numrows,numcols]);
     % Allocate space for all the measurements
     measurements= zeros(num_fourier_masks,numrows,numcols);
