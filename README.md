@@ -9,4 +9,4 @@ particularly in crystallography and microscopy.
  solvers.  The interface also gives users the option to control the initialization and runtime of different algorithms, making it easy to "plug and play" different routines and options.
 
 # To find out more
-See the main [PhasePack page](http://cs.umd.edu/~tomg/projects/phasepack/) for usage information and a complete user guide.
+See the main [PhasePack page](http://cs.umd.edu/~tomg/projects/phasepack/) for complete information, or check out the [user guide](https://arxiv.org/abs/1711.09777).
