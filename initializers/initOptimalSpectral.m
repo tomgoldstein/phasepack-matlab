@@ -95,7 +95,7 @@ end
 m = numel(b0);                % number of measurements
 
 if ~exist('verbose','var') || verbose
-fprintf(['Estimating signal of length %d using a optical spectral ',...
+fprintf(['Estimating signal of length %d using the optimal spectral ',...
          'initializer with %d measurements...\n'],n,m);
 end
 
