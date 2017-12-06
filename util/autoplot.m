@@ -1,5 +1,16 @@
-% This function automatically chooses the axis types (linear or log) for
-% your plot, and then plots the curves.
+%                             autoplot.m
+%
+% This function generates a line plot from x-axis and y-axis data.  It
+% automatically selects either a linear or log axis, and it chooses colors
+% and markers for the lines to make them easily distinguisable.
+%
+% inputs:
+%       xvals:  a column vector of horizontal axis data
+%       yvals:  a matrix, each column of which contains the data to
+%                   generate a line of the plot
+%       curveNames:  a cell array of string containing the name of each
+%               curve to appear in the legend.
+
 
 function autoplot( xvals, yvals, curveNames)
 

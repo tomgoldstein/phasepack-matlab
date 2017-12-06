@@ -54,10 +54,10 @@ kac = struct('algorithm','kaczmarz','maxIters',1000);
 pmax = struct( 'algorithm','phasemax','maxIters',1000);
 plamp = struct('algorithm', 'phaselamp','maxIters',1000);
 scgm = struct('algorithm','sketchycgm');     
-plift = struct('algorithm','phaselift');                                             
+plift = struct('algorithm','phaselift','initMethod','orthogonal');                                             
 
 % Grab your pick of algorithms.
-algorithms = {wf,raf,fienup};
+algorithms = {plift};
 
 
 %% 2. Run benchmark

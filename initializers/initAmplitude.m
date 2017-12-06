@@ -96,7 +96,7 @@
 %% -----------------------------START----------------------------------
 
 
-function [x0] = initTruncated(A,At,b0,n,verbose)
+function [x0] = initAmplitude(A,At,b0,n,verbose)
 
 psi = b0; % To be consistent with the notation used in the paper
 

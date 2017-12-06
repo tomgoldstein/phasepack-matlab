@@ -218,7 +218,7 @@ function [A, At, b0, xt, plotter, params] = createProblemData(dataSet, params)
         case '2dimage'
             [A, At, b0, xt, plotter] = experimentImage2D(params.numMasks, params.imagePath);
         case 'transmissionmatrix'
-            [A, b0, xt, plotter] = experimentTransMatrixWithSynthData(params.n, params.m, params.A_cached);
+            [A, b0, xt, plotter] = experimentTransMatrixWithSynthSignal(params.n, params.m, params.A_cached);
             params.A_cached = A;
             At = [];
         otherwise
