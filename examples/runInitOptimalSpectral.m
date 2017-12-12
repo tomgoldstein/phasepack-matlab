@@ -1,4 +1,4 @@
-%%                   testinitOpticalSpectral.m
+%%                   runinitOpticalSpectral.m
 
 % This file tests the Optimal Spectral initializer. The code
 % builds a synthetic formulation of the Phase Retrieval problem, b = |Ax|

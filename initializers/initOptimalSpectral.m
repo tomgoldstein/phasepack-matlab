@@ -1,4 +1,4 @@
-%                           initOpticalSpectral.m
+%                           initOptimalSpectral.m
 %
 %  Initializer recently proposed based on an optimal spectral method. The
 %  plain vanilla spectral initializer computes the largest eigenvector of Y
